@@ -48,10 +48,8 @@
 }
 
 .App-subtitles {
-	background: var(--subtitles-background);
 	color: var(--subtitles-text-color);
-	font-family: Courier;
-	font-size: 1.5em;
+	font-size: 1em;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -65,6 +63,16 @@
 
 .App-subtitles p {
 	padding: 20px 40px;
+	background: var(--subtitles-background);
+	text-align: start;
+}
+
+.App-subtitles p.Cue {
+	font-style: italic;
+}
+
+.App-subtitles p.Cue .nameTag {
+	display:none;
 }
 
 .App button {
