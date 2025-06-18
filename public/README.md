@@ -1,8 +1,9 @@
-# Intrinsink
+# Intrinsink software for online interactive performances
 
 If you want to get set up as quickly as possible, start [here](./docs/02_getting-started-with-intrinsink.md).
 
 - [Introduction](#introduction)
+
   - [Intrinsink in a Nutshell](#intrinsink-in-a-nutshell)
   - [Example](#example)
   - [Hello World Template vs App](#hello-world-template-vs-app)
@@ -42,7 +43,8 @@ Intrinsink facilitates the creation of performances that can incorporate and rea
 
 ### Accessibility
 
-Making performances more accessible is a key goal of Intrinsink. All performances built with Intrinsink have these accessibility features:
+Making performances more accessible is a key goal of Intrinsink. All performances built with it have these accessibility features:
+
 
 - The UI includes [a live video stream](./docs/01_overview.md#audience-view-main), enabling both fully-online and hybrid performances. This allows performances built using Intrinsink to be more accessible to people who face barriers to in-person venues.
 - A built-in subtitles interface which:
@@ -65,4 +67,4 @@ Intrinsink Hello World is a starter template for artists who have limited softwa
 
 ### Intrinsink App
 
-Intrinsink App is the core of Intrinsink’s software. If you want to make customizations that are not possible with the Hello World starter template, then you will need to build on top of the core Intrinsink App code. Building with Intrinsink App requires the ability to program with JavaScript, React, and CSS. Intrinsink App can be found here: [https://github.com/squinky/intrinsink-app](https://github.com/squinky/intrinsink-app).
+Intrinsink App is the core of our software. If you want to make customizations that are not possible with the Hello World starter template, then you will need to build on top of the core Intrinsink App code. Building with Intrinsink App requires the ability to program with JavaScript, React, and CSS. Intrinsink App can be found here: [https://github.com/squinky/intrinsink-app](https://github.com/squinky/intrinsink-app).
