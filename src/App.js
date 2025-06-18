@@ -59,8 +59,10 @@ class App extends React.Component {
 			performance = this.state.performance;
 			styles = (<GlobalStyle styles={this.state.settings.styles} />);
 			mainTaskbarLeft = (<strong>{this.state.settings.title}</strong>);
-			mainTaskbarRight = (<div><span className="material-icons"><span className="active">feed</span> mic bluetooth cloud wifi battery_4_bar</span> &nbsp;2:22</div>);
-			if (this.state.showVideoPanel) {
+			if (this.state.settings.showDesktopIcons) {
+				mainTaskbarRight = (<div><span className="material-icons"><span className="active">feed</span> mic bluetooth cloud wifi battery_4_bar</span> &nbsp;2:22</div>);
+			}
+			if (this.state.showVideoPanel && this.state.settings.videoCallEmbedLink) {
 				const videoTaskbarRight = (
 					<div>
 						<Button
@@ -78,7 +80,7 @@ class App extends React.Component {
 				);
 			} else {
 				panelSizes = [100];
-				if (window.innerWidth >= 1024) {
+				if (window.innerWidth >= 1024 && this.state.settings.videoCallEmbedLink) {
 					expander = (
 						<div className='expander'>
 							<Button text=">>" id={true} onClicked={this.handleShowVideoPanel} />

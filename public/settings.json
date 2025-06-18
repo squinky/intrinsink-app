@@ -4,7 +4,7 @@
 	"title": "Hello World",
 	"showRantContentToAudience": true,
 	"callers": [ "Apple", "Banana" ],
-	"videoCallEmbedLink": "https://www.youtube.com/embed/jlyYqZqBDRw?si=sEtyIoaQfeWz5AOr",
+	"videoCallEmbedLink": null,
 	"styles": {
 		"desktopBackground": "black url('https://squinky.github.io/intrinsink-hello-world/images/stars.gif')",
 		"interactBackground": "rgba(0,0,0,0.8)",
@@ -22,10 +22,10 @@
 		"subtitlesBackground": "darkslateblue",
 		"subtitlesTextColor": "white"
 	},
+	"showDesktopIcons": false,
 	"defaultAudienceMessage": "You don't have to do anything right now - just sit back and enjoy the show!",
 	"endMessage": "Thank you for playing!",
 	"linkTree": [
-		{ "text": "Intrapology website", "url": "https://intrapology.com/" },
-		{ "text": "Soft Chaos website", "url": "https://softchaos.games/" }
+		{ "text": "Learn more about Intrinsink", "url": "https://intrapology.com/software/" }
 	]
 }
