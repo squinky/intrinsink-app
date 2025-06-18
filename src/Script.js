@@ -8,7 +8,8 @@ class Script {
 		axios.get("./script.json").then((res) => this.setScript(res.data, id, props));
 	}
 	setScript(json, id, props) {
-		this.story = new Story(json);
+		this.json = json;
+		this.story = new Story(this.json);
 		this.seenChoices = new Set()
 
 		// Originally intended to listen to functions being called, but internal ink functions
@@ -122,7 +123,7 @@ class Script {
 		this.continue(id);
 	}
 	startOver(id) {
-		this.story.ChoosePathString("Start");
+		this.story = new Story(this.json);
 		this.continue(id);
 	}
 }

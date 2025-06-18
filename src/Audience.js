@@ -89,26 +89,35 @@ class Audience extends React.Component {
 			newText = this.props.performance.audience.replace(/\w+: /, '').trim();
 			textType = this.props.performance.audience.slice(0, this.props.performance.audience.indexOf(": "));
 			if (textType === "AUDIENCE_CHOICES") {
-				const choiceList = Object.keys(choices).map((i) =>
-					<Button
-						key={i}
-						text={choices[i].text+" ("+choices[i].votes+" votes)"}
-						styleClass={
-							makeChoiceClassString(
-								Number(i) === Number(leading),
-								choices[i]
-							)
-						}
-						id={i}
-						onClicked={this.handleChoice}
-						selected={this.state.selected === i} />
-				);
-				return (
-					<div>
-						<p tabIndex="0" role="alert">{newText.trim()}</p>
-						{choiceList}
-					</div>
-				);
+				// if there are no choices left, show the default message
+				if (!choices.length) {
+					return (
+						<div aria-live="off">
+							<p>{this.props.settings.defaultAudienceMessage}</p>
+						</div>
+					);
+				} else {
+					const choiceList = Object.keys(choices).map((i) =>
+						<Button
+							key={i}
+							text={choices[i].text+" ("+choices[i].votes+" votes)"}
+							styleClass={
+								makeChoiceClassString(
+									Number(i) === Number(leading),
+									choices[i]
+								)
+							}
+							id={i}
+							onClicked={this.handleChoice}
+							selected={this.state.selected === i} />
+					);
+					return (
+						<div>
+							<p tabIndex="0" role="alert">{newText.trim()}</p>
+							{choiceList}
+						</div>
+					);
+				}
 			} else if (textType === "AUDIENCE_RANTBOX") {
 				let freeResponseBox = <TextBox onSubmitted={this.handleFreeResponse}/>;
 
