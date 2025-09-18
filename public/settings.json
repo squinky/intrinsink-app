@@ -3,6 +3,7 @@
 	"modPassword": "butts",
 	"title": "Hello World",
 	"showRantContentToAudience": true,
+	"showSubtitlesToAudience": true,
 	"callers": [ "Apple", "Banana" ],
 	"videoCallEmbedLink": null,
 	"styles": {

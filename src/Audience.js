@@ -6,8 +6,18 @@ class Audience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selected: null
+			selected: null,
+			initSubtitles: false,
+			showSubtitle: false
 		};
+	}
+	handleShowSubtitle = (on) => {
+		this.setState(state => ({
+			showSubtitle: on
+		}));
+	}
+	toggleShowSubtitle = () => {
+		this.handleShowSubtitle(!this.state.showSubtitle);
 	}
 	handleChoice = (id) => {
 		const prev = this.state.selected
@@ -32,6 +42,13 @@ class Audience extends React.Component {
 		window.open(id);
 	}
 	componentDidUpdate() {
+		if (this.props.settings && !this.state.initSubtitles)
+		{
+			this.setState(state => ({
+				initSubtitles: true
+			}));
+			this.handleShowSubtitle(this.props.settings.showSubtitlesToAudience);
+		}
 		if (!this.props.performance) return;
 		let resetChoices = true;
 		const choices = this.props.performance.choices;
@@ -70,6 +87,12 @@ class Audience extends React.Component {
 				</div>
 			);
 		}
+		let subtitle = null;
+		if (this.state.showSubtitle && this.props.performance.currentLine) {
+			subtitle = <p>{this.props.performance.currentSpeaker.toUpperCase()}: {this.props.performance.currentLine}</p>
+		}
+		let subtitleToggleText = this.state.showSubtitle ? "Hide Subtitles" : "Show Subtitles";
+		let subtitleToggle = <Button text={subtitleToggleText} onClicked={this.toggleShowSubtitle} styleClass="smallbutton" />
 		let choices = [];
 		let leading = 0;
 		const allChoices = this.props.performance.choices;
@@ -93,7 +116,9 @@ class Audience extends React.Component {
 				if (!choices.length) {
 					return (
 						<div aria-live="off">
+							{subtitle}
 							<p>{this.props.settings.defaultAudienceMessage}</p>
+							{subtitleToggle}
 						</div>
 					);
 				} else {
@@ -113,8 +138,10 @@ class Audience extends React.Component {
 					);
 					return (
 						<div>
+							{subtitle}
 							<p tabIndex="0" role="alert">{newText.trim()}</p>
 							{choiceList}
+							{subtitleToggle}
 						</div>
 					);
 				}
@@ -133,25 +160,30 @@ class Audience extends React.Component {
 				}
 				return (
 					<div>
+						{subtitle}
 						<div className="bubble">
 							<p tabIndex="0" role="alert" >{newText.trim()}</p>
 							{freeResponseBox}
 						</div>
-						
 						{rantContent}
+						{subtitleToggle}
 					</div>
 				);
 			} else {
 				return (
 					<div>
+						{subtitle}
 						<p tabIndex="0" role="alert">{newText.trim()}</p>
+						{subtitleToggle}
 					</div>
 				);
 			}
 		} else {
 			return (
 				<div aria-live="off">
+					{subtitle}
 					<p>{this.props.settings.defaultAudienceMessage}</p>
+					{subtitleToggle}
 				</div>
 			);
 		}

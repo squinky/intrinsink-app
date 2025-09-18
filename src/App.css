@@ -140,6 +140,12 @@
 	cursor: pointer;
 }
 
+.App .smallbutton {
+	width: 50%;
+	padding: 0.5em;
+	margin-top: 1em;
+}
+
 .App form {
 	display: flex;
 }
