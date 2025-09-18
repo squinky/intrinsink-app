@@ -91,8 +91,11 @@ class Audience extends React.Component {
 		if (this.state.showSubtitle && this.props.performance.currentLine) {
 			subtitle = <p>{this.props.performance.currentSpeaker.toUpperCase()}: {this.props.performance.currentLine}</p>
 		}
+		let subtitleToggle = null;
 		let subtitleToggleText = this.state.showSubtitle ? "Hide Subtitles" : "Show Subtitles";
-		let subtitleToggle = <Button text={subtitleToggleText} onClicked={this.toggleShowSubtitle} styleClass="smallbutton" />
+		if (this.props.settings.showSubtitlesToAudience) {
+			subtitleToggle = <Button text={subtitleToggleText} onClicked={this.toggleShowSubtitle} styleClass="smallbutton" />
+		}
 		let choices = [];
 		let leading = 0;
 		const allChoices = this.props.performance.choices;
