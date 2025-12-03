@@ -90,15 +90,19 @@ class Script {
 		while (nextLines.length > 0) {
 			line = nextLines.shift();
 			const speaker = this.getSpeaker(line)
-            if (speaker?.includes('AUDIENCE')) {
+      if (speaker?.includes('AUDIENCE')) {
 				audience = line;
+			} else if(speaker?.includes('BACKGROUND')) {
+				const updates = {};
+				updates["background"] = this.getLineText(line);
+				firebase.database().ref(id).update(updates);
 			} else {
 				break;
 			}
 		}
 		this.rants = rants;
 		const state = this.story.state.toJson();
-		firebase.database().ref(id).set({
+		const updates = {
 			currentLine: this.getLineText(line),
 			currentSpeaker: this.getSpeaker(line),
 			nextLines: nextLines,
@@ -106,7 +110,8 @@ class Script {
 			choices: choices,
 			rants: rants,
 			saveState: state,
-		});
+		};
+		firebase.database().ref(id).update(updates);
 	}
 	getLineText(text) {
 		let newText = text.replace(/\w+: /, '');

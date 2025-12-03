@@ -4,6 +4,8 @@ VAR topic = "nothing"
 
 ==Start
 
+BACKGROUND: bg1.jpg
+
 Apple: Hi, I'm the first video caller!
 
 Banana: Hi, I'm the second video caller!
@@ -35,6 +37,8 @@ Banana: What should be our next topic of discussion?
 - ->WriteIn
 
 ==WriteIn
+
+BACKGROUND: bg2.jpg
 
 AUDIENCE_RANTBOX: Write any thoughts you have about {topic} here.
 

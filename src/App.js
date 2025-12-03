@@ -52,7 +52,7 @@ class App extends React.Component {
 		this.setState = (state, callback) => {return;};
 	}
 	render() {
-		let settings, performance, styles, video, mainTaskbarLeft, mainTaskbarRight, expander;
+		let settings, performance, styles, video, mainTaskbarLeft, mainTaskbarRight, expander, bgimage;
 		let panelSizes = this.state.panelSizes;
 		if (this.state.settings) {
 			settings = this.state.settings;
@@ -87,6 +87,11 @@ class App extends React.Component {
 						</div>
 					);
 				}
+			}
+			if (this.state.performance?.background) {
+				bgimage = (
+					<img src={"images/"+this.state.performance.background} alt="background" />
+				);
 			}
 		}
 		const audience = (
@@ -130,6 +135,11 @@ class App extends React.Component {
 				<Subtitles performance={performance} />
 			</div>
 		);
+		const background = (
+			<div className="Background">
+				{bgimage}
+			</div>
+		);
 		return (
 			<Router>
 				<Routes>
@@ -137,6 +147,7 @@ class App extends React.Component {
 					<Route path="/caller" element={caller} />
 					<Route path="/moderator" element={moderator} />
 					<Route path="/subtitles" element={subtitles} />
+					<Route path="/background" element={background} />
 				</Routes>
 			</Router>
 		);

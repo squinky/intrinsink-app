@@ -189,6 +189,18 @@
 	margin-bottom: 0.5em;
 }
 
+.Background {
+	background-color: black;
+	width: 100vw;
+	height: 100vh;
+}
+
+.Background img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
 .choice-list li{
 	display:flex;
 	gap:2rem;
